@@ -12,7 +12,7 @@ def graph(server_id):
     PATH = f"{os.getcwd()}\data\{str(server_id)}"
     server_id = str(server_id)
 
-    utils.check_dir(PATH, True, "charts")
+    utils.check_dir(server_id)
 
     csv_file = open(f"{PATH}\messages.csv", "r", newline="", encoding="utf-8")
     csv_reader = csv.reader(csv_file)
@@ -41,26 +41,17 @@ def graph(server_id):
     ax.set(facecolor = "grey")
     ax.patch.set_alpha(0)
 
-    #REMOVE TICKS FROM AXIS
-    axis_ticks = cfg.AXIS_TICKS
-
-    ax.xaxis.set_ticks_position(axis_ticks) 
-    ax.yaxis.set_ticks_position(axis_ticks) 
-
     #MAKES AXIS TRANSPARENT
     axis_alpha = cfg.AXIS_ALPHA
 
-    ax.spines['bottom'].set_alpha(axis_alpha)
-    ax.spines['top'].set_alpha(axis_alpha)
-    ax.spines['left'].set_alpha(axis_alpha)
-    ax.spines['right'].set_alpha(axis_alpha)
-    ax.xaxis.label.set_color('white')
+    ax.spines['bottom'].set_color(cfg.AXIS_TXT_COLOR)
+    ax.spines['top'].set_color(cfg.AXIS_TXT_COLOR)
+    ax.spines['left'].set_color(cfg.AXIS_TXT_COLOR)
+    ax.spines['right'].set_color(cfg.AXIS_TXT_COLOR)
 
     #COLOR THE AXIS TEXT
-    ax.tick_params(axis='x', colors=cfg.AXIS_TXT_COLOR)
-    ax.tick_params(axis='y', colors=cfg.AXIS_TXT_COLOR)
-
-    utils.check_dir(f"{PATH}\charts", True, "charts")
+    ax.tick_params(axis='x', colors=cfg.AXIS_TICKS)
+    ax.tick_params(axis='y', colors=cfg.AXIS_TICKS)
 
     plt.savefig(f"{PATH}\charts\moh-1_day.png", transparent=cfg.PLOT_ALPHA, dpi=cfg.DPI)
     plt.clf()

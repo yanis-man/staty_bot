@@ -7,13 +7,13 @@ class BotConfig():
 class GraphConfig():
     #GENERAL
     PLOT_ALPHA = True
-    DPI = 300
+    DPI = 700
     LINESTYLE = "-"
     LINEWIDTH = .5
-    AXIS_TICKS = "none"
+    AXIS_TICKS = 'none'
 
     #ALPHA
-    AXIS_ALPHA = 0
+    AXIS_ALPHA = 1.0
     BAR_ALPHA = .7
     GRID_ALPHA = .2
 
