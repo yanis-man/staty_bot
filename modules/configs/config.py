@@ -20,8 +20,12 @@ class GraphConfig():
 
     #COLOR
     GRID_COLOR = "royalblue"
-    BAR_COLOR = "rylablue"
+    BAR_COLOR = "royalblue"
     AXIS_TXT_COLOR = "white"
 
 class MessageConfig():
-    
+    #GENERAL
+
+    #ERROR
+    PERMS_ERROR = "tu vas où mon reuf?"
+    WRONG_CHAN = "t'es khabat ? jpeux pas parler ici"
