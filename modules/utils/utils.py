@@ -1,14 +1,17 @@
 import os
 #USED TO CHECK IF A DIR EXIST, IF NOT IT POSSIBLE TO ASK TO DO IT
-def check_dir(path, do_create=False, dir_name=None):
-    if not os.path.isdir(path):
-        if do_create and dir_name != None:
-            os.mkdir(f"{path}\{dir_name}")
+
+PATH = f"{os.getcwd()}\data\\"
+
+def check_dir(server_id, do_create = True):
+    if not os.path.isdir(PATH+f"{server_id}"):
+        if do_create:
+            setup_dir(server_id)
             return True
         return False
-    return True
+    return False
 
 def setup_dir(server_id):
-    PATH = f"{os.getcwd()}\data\{server_id}"
-    check_dir(PATH, True, server_id)
-    os.mkdir(f"{PATH}\charts")
+    server_path = PATH+f"{server_id}"
+    os.mkdir(server_path)
+    os.mkdir(f"{server_path}\charts")
