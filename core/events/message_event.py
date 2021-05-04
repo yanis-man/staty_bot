@@ -3,7 +3,8 @@ from discord.utils import get, find
 import discord
 import csv
 from datetime import datetime
-import tools.messages as tool
+
+import modules.tools as tools
 
 
 class MessageEvents(commands.Cog):
@@ -12,7 +13,7 @@ class MessageEvents(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, ctx):
-        tool.register_message(ctx.guild.id, ctx.author.id, ctx.channel.id)
+        tools.register_message(ctx.guild.id, ctx.author.id, ctx.channel.id)
         
 
 

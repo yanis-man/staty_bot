@@ -1,12 +1,13 @@
 import matplotlib.pyplot as plt
 import csv
 import os
+
 import modules.utils.utils as utils
-from modules.configs.config_parser import getGraphConfig
+from modules.configs.config import GraphConfig
 
 def graph(server_id):
 
-    CONFIG = getGraphConfig()
+    cfg = GraphConfig()
 
     PATH = f"{os.getcwd()}\data\{str(server_id)}"
     server_id = str(server_id)
@@ -30,9 +31,9 @@ def graph(server_id):
     message_count[:] = hours_c.values()
     hours[:] = hours_c.keys()
 
-    plt.bar(hours, message_count, color=CONFIG['color']['bar_color'], alpha=CONFIG['alpha']['bar_alpha'])
+    plt.bar(hours, message_count, color=cfg.BAR_COLOR, alpha=cfg.BAR_ALPHA)
 
-    plt.grid(True, linewidth=CONFIG['general']['linewidth'], color=CONFIG['color']['grid_color'], linestyle=CONFIG['general']['linestyle'], alpha=CONFIG['alpha']['grid_alpha'])
+    plt.grid(True, linewidth=cfg.LINEWIDTH, color=cfg.GRID_COLOR, linestyle=cfg.LINESTYLE, alpha=cfg.GRID_ALPHA)
 
     ax = plt.axes()
 
@@ -41,13 +42,13 @@ def graph(server_id):
     ax.patch.set_alpha(0)
 
     #REMOVE TICKS FROM AXIS
-    axis_ticks = CONFIG['general']['axis_tick_p']
+    axis_ticks = cfg.AXIS_TICKS
 
     ax.xaxis.set_ticks_position(axis_ticks) 
     ax.yaxis.set_ticks_position(axis_ticks) 
 
     #MAKES AXIS TRANSPARENT
-    axis_alpha = CONFIG['alpha']['axis_alpha']
+    axis_alpha = cfg.AXIS_ALPHA
 
     ax.spines['bottom'].set_alpha(axis_alpha)
     ax.spines['top'].set_alpha(axis_alpha)
@@ -56,11 +57,11 @@ def graph(server_id):
     ax.xaxis.label.set_color('white')
 
     #COLOR THE AXIS TEXT
-    ax.tick_params(axis='x', colors=CONFIG['color']['axis_text_color'])
-    ax.tick_params(axis='y', colors=CONFIG['color']['axis_text_color'])
+    ax.tick_params(axis='x', colors=cfg.AXIS_TXT_COLOR)
+    ax.tick_params(axis='y', colors=cfg.AXIS_TXT_COLOR)
 
     utils.check_dir(f"{PATH}\charts", True, "charts")
 
-    plt.savefig(f"{PATH}\charts\moh-1_day.png", transparent=CONFIG['general']['plot_alpha'], dpi=CONFIG['general']['dpi'])
+    plt.savefig(f"{PATH}\charts\moh-1_day.png", transparent=cfg.PLOT_ALPHA, dpi=cfg.DPI)
     plt.clf()
     plt.close()

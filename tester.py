@@ -1,4 +1,5 @@
-from modules.configs.config_parser import BotConfig
+from modules.configs.config import BotConfig
+import os
 
 bc = BotConfig()
-print(bc.iniate())
+print(os.getenv("BOT_TOKEN"))

@@ -3,7 +3,7 @@ import os
 def check_dir(path, do_create=False, dir_name=None):
     if not os.path.isdir(path):
         if do_create and dir_name != None:
-            os.mkdir(f"{path}\+{dir_name}")
+            os.mkdir(f"{path}\{dir_name}")
             return True
         return False
     return True

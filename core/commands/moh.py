@@ -1,7 +1,7 @@
 from discord.ext import commands
 import discord
 import datetime
-from tools.grapher import *
+from modules.grapher.grapher import *
 
 class Moh(commands.Cog):
     def __init__(self, bot):
