@@ -1,8 +1,7 @@
-import configparser as CP
-from enum import Enum
+import os
 
 class BotConfig():
-    TOKEN = "Nzk5OTkxMDYzODc1Mjg5MTA4.YALnvA.RvbsaSFvsv3UoLUwgNU711yYrQg"
+    TOKEN = os.getenv("BOT_TOKEN")
     PREFIX = "%"
 
 class GraphConfig():
