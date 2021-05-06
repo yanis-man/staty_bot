@@ -1,10 +1,16 @@
 from termcolor import colored, cprint
+from modules.configs.config import MessageConfig
+
+MSG = MessageConfig()
 
 def load_ok_msg(module_name):
-    cprint(f"[LOAD] {module_name} correctly loaded", "cyan")
+    cprint(f"{MSG.MODULE_LOADED} {module_name}", "cyan")
+
+def load_error(module_name, err):
+    cprint(f"{MSG.ERR_MODULE_LOADING} {module_name} : \n {err}", "red")
 
 def ok_msg(ok_text):
-    cprint(f"[OK] {ok_text}", 'green')
+    cprint(f"{MSG.OK} {ok_text}", 'green')
 
-def error_msg(error_text):
-    cprint(f"[ERR] {error_msg}", 'red')
+def error_msg(error_text, err):
+    cprint(f"{MSG.ERR} {error_msg} : \n {err}", 'red')

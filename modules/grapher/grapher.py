@@ -4,34 +4,15 @@ import os
 
 import modules.utils.utils as utils
 from modules.configs.config import GraphConfig
+from modules.grapher.data_manager import get_data
 
-def graph(server_id):
-
+def graph(server_id, limit):
+    PATH = f"{os.getcwd()}\data\{server_id}"
     cfg = GraphConfig()
 
-    PATH = f"{os.getcwd()}\data\{str(server_id)}"
-    server_id = str(server_id)
+    proper_data = get_data(server_id, limit)
 
-    utils.check_dir(server_id)
-
-    csv_file = open(f"{PATH}\messages.csv", "r", newline="", encoding="utf-8")
-    csv_reader = csv.reader(csv_file)
-
-    hours_c = {}
-    h = []
-
-    for line in csv_reader:
-        hours = line[2].split("/")[1].split(":")[0] + "h"
-        if hours not in hours_c: hours_c[hours] = 0 
-        hours_c[hours] += 1
-    
-    csv_file.close()
-    hours = []
-    message_count = []    
-    message_count[:] = hours_c.values()
-    hours[:] = hours_c.keys()
-
-    plt.bar(hours, message_count, color=cfg.BAR_COLOR, alpha=cfg.BAR_ALPHA)
+    plt.bar(proper_data[0], proper_data[1], color=cfg.BAR_COLOR, alpha=cfg.BAR_ALPHA)
 
     plt.grid(True, linewidth=cfg.LINEWIDTH, color=cfg.GRID_COLOR, linestyle=cfg.LINESTYLE, alpha=cfg.GRID_ALPHA)
 

@@ -4,7 +4,7 @@ import discord
 from discord.ext import commands
 import sys, traceback
 
-import core.log.messages as log
+import core.log.messages as Log
 import modules.utils.utils as utils
 from modules.configs.config import BotConfig
 
@@ -24,18 +24,22 @@ if __name__ == "__main__":
     for command in commands_files:
         try:
             bot.load_extension(f"core.commands.{command[:-3]}")
-            log.load_ok_msg(command[:-3])
+
+            Log.load_ok_msg(command[:-3])
+
         except Exception as error:
             print(f'[ERR] Failed to load commands {command[:-3]} : {error}')
-            log.error_msg(f'Failed to load extension {command[:-3]} : {error}')
+            Log.load_error(command[:-3], error)
 
     for event in events_files:
         try:
             bot.load_extension(f"core.events.{event[:-3]}")
-            log.load_ok_msg(event[:-3])
+            Log.load_ok_msg(event[:-3])
+
         except Exception as error:
             print(f'[ERR] Failed to load extension {event[:-3]} : {error}')
-            log.error_msg(f'Failed to load extension {event[:-3]} : {error}')
+            Log.load_error(event[:-3], error)
             traceback.print_exc()
+            
 print("Logged in")
 bot.run(cfg.TOKEN)

@@ -1,5 +1,5 @@
-from modules.configs.config import BotConfig
-import os
+def a(b = "1j"):
+    print(b)
 
-bc = BotConfig()
-print(os.getenv("BOT_TOKEN"))
+a("2d")
+

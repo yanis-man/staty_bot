@@ -23,8 +23,19 @@ class GraphConfig():
     AXIS_TXT_COLOR = "white"
 
 class MessageConfig():
-    #GENERAL
+    OK = None
+    LOAD = None 
+    ERR = None
+    def __init__(self):
+        #PREFIX
+        OK = "[OK]"
+        LOAD = "[LOAD]"
+        ERR = "[ERR]"
 
-    #ERROR
+    #GENERAL
+    MODULE_LOADED = f"{LOAD} Load OK :"
+    
+    #ERRORS
     PERMS_ERROR = "tu vas où mon reuf?"
     WRONG_CHAN = "t'es khabat ? jpeux pas parler ici"
+    ERR_MODULE_LOADING = f"{ERR} Could not load :"
