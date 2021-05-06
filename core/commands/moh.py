@@ -9,6 +9,6 @@ class Moh(commands.Cog):
 
     @commands.command()
     async def moh(self, ctx, limit):
-        graph(ctx.guild.id, limit)
+        graph(ctx.guild.id, limit, "moh")
 def setup(bot):
     bot.add_cog(Moh(bot))

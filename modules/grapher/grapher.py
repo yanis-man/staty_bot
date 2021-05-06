@@ -6,7 +6,7 @@ import modules.utils.utils as utils
 from modules.configs.config import GraphConfig
 from modules.grapher.data_manager import get_data
 
-def graph(server_id, limit):
+def graph(server_id, limit, filename):
     PATH = f"{os.getcwd()}\data\{server_id}"
     cfg = GraphConfig()
 
@@ -34,6 +34,6 @@ def graph(server_id, limit):
     ax.tick_params(axis='x', colors=cfg.AXIS_TICKS)
     ax.tick_params(axis='y', colors=cfg.AXIS_TICKS)
 
-    plt.savefig(f"{PATH}\charts\moh-1_day.png", transparent=cfg.PLOT_ALPHA, dpi=cfg.DPI)
+    plt.savefig(f"{PATH}\charts\{filename}.png", transparent=cfg.PLOT_ALPHA, dpi=cfg.DPI)
     plt.clf()
     plt.close()
