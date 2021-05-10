@@ -29,6 +29,6 @@ class Stats(commands.Cog):
         uph_data = get_uph_data(ctx.guild.id, limit)
         bar_plot(ctx.guild.id, FileCfg.UPH_FILENAME, uph_data[0], uph_data[1])
 
-        await ctx.send(embed=generate_embed(f"{EmbedCfg.MOH_TITLE} du {parse_limit(limit)} à Aujourd'hui", ctx.guild.id, limit, FileCfg.UPH_FILENAME))
+        await ctx.send(embed=generate_embed(f"{EmbedCfg.UPH_TITLE} du {parse_limit(limit)} à Aujourd'hui", ctx.guild.id, limit, FileCfg.UPH_FILENAME))
 def setup(bot):
     bot.add_cog(Stats(bot))
