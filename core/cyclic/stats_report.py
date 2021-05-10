@@ -14,11 +14,6 @@ class StatsReport(commands.Cog):
     async def daily_report(self):
         print(self.index)
         self.index += 1
-    
-    @daily_report.before_loop
-    async def wait_bot(self):
-        print("waiting for bot to start")
-        await self.bot.wait_until_ready()
 
 def setup(bot):
     bot.add_cog(StatsReport(bot))
