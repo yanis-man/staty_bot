@@ -1,3 +1,4 @@
 tester.py
 data/*
 *.pyc
+*.csv
