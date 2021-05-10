@@ -44,7 +44,7 @@ if __name__ == "__main__":
     for cycle in cyclic_files:
         try:
             bot.load_extension(f"core.cyclic.{cycle[:-3]}")
-            Log.load_ok_msg(event[:-3])
+            Log.load_ok_msg(cycle[:-3])
 
         except Exception as error:
             print(f'[ERR] Failed to load extension {cycle[:-3]} : {error}')

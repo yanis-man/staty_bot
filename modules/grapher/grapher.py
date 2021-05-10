@@ -18,7 +18,6 @@ def graph(server_id, limit, filename):
 
     ax = plt.axes()
 
-
     ax.set(facecolor = "grey")
     ax.patch.set_alpha(0)
 
@@ -31,6 +30,11 @@ def graph(server_id, limit, filename):
     ax.spines['right'].set_color(cfg.AXIS_TXT_COLOR)
 
     #COLOR THE AXIS TEXT
+    plt.xticks([r + 1 for r in range(len(proper_data[1]))],
+        proper_data[0])
+    plt.yticks([r for r in range(len(proper_data[1]))],
+        proper_data[1])
+
     ax.tick_params(axis='x', colors=cfg.AXIS_TICKS)
     ax.tick_params(axis='y', colors=cfg.AXIS_TICKS)
 

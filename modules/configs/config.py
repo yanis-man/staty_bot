@@ -10,7 +10,7 @@ class GraphConfig():
     DPI = 700
     LINESTYLE = "-"
     LINEWIDTH = .5
-    AXIS_TICKS = 'none'
+    AXIS_TICKS = 'white'
 
     #ALPHA
     AXIS_ALPHA = 1.0
@@ -39,3 +39,16 @@ class MessageConfig():
     PERMS_ERROR = "tu vas où mon reuf?"
     WRONG_CHAN = "t'es khabat ? jpeux pas parler ici"
     ERR_MODULE_LOADING = f"{ERR} Could not load :"
+
+class FileConfig():
+
+    API_KEY = "3985852a41d56dd254a96c34a5118809"
+    FILE_EXTENSION = "png"
+    MOH_FILENAME = "moh"
+    SEVEN_DAYS_FILENAME = "seven_days"
+
+class EmbedTitle():
+    MOH_TITLE = "Messages en fonction des heures"
+    SEVEN_DAYS = "Nombre de messages sur 7 jours"
+    MESSAGE_PER_CHANNEL = "Répartition des messages en fonction des salons"
+
