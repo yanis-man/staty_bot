@@ -29,5 +29,4 @@ def get_data(server_id, limit="1j"):
     message_count = []    
     message_count[:] = hours_c.values()
     hours[:] = hours_c.keys()
-
     return [hours, message_count]

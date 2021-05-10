@@ -11,6 +11,7 @@ class GraphConfig():
     LINESTYLE = "-"
     LINEWIDTH = .5
     AXIS_TICKS = 'white'
+    BAR_WIDTH = .90
 
     #ALPHA
     AXIS_ALPHA = 1.0

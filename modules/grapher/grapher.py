@@ -12,7 +12,7 @@ def graph(server_id, limit, filename):
 
     proper_data = get_data(server_id, limit)
 
-    plt.bar(proper_data[0], proper_data[1], color=cfg.BAR_COLOR, alpha=cfg.BAR_ALPHA)
+    plt.bar(proper_data[0], proper_data[1], color=cfg.BAR_COLOR, alpha=cfg.BAR_ALPHA, width=cfg.BAR_WIDTH)
 
     plt.grid(True, linewidth=cfg.LINEWIDTH, color=cfg.GRID_COLOR, linestyle=cfg.LINESTYLE, alpha=cfg.GRID_ALPHA)
 
@@ -30,7 +30,7 @@ def graph(server_id, limit, filename):
     ax.spines['right'].set_color(cfg.AXIS_TXT_COLOR)
 
     #COLOR THE AXIS TEXT
-    plt.xticks([r + 1 for r in range(len(proper_data[1]))],
+    plt.xticks([r + cfg.BAR_WIDTH for r in range(len(proper_data[1]))],
         proper_data[0])
     plt.yticks([r for r in range(len(proper_data[1]))],
         proper_data[1])
