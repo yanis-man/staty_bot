@@ -1,7 +1,6 @@
 from discord import Embed
 import os
 
-from modules.grapher.grapher import graph
 from modules.tools.file_uploader import upload_image
 from modules.configs.config import FileConfig
 
