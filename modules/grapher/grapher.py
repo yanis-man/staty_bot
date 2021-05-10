@@ -6,6 +6,7 @@ import modules.utils.utils as utils
 from modules.configs.config import GraphConfig
 
 def bar_plot(server_id,filename, data_on_x = None, data_on_y = None):
+    
     if (data_on_x or data_on_y) is None: 
         return False
     PATH = f"{os.getcwd()}\data\{server_id}"

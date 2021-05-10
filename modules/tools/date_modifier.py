@@ -23,17 +23,26 @@ def compute_limit_date(duration, types):
     if today.day < 10:
         zero_d = "0"
     if types == "h":
-        FINAL_DATE = datetime.strptime(f"{zero_d}{today.day}-{zero_m}{today.month}-{today.year - CENTURY}/{today.hour - duration}:{today.minute}:{today.second}", MODEL).strftime(MODEL)
+        FINAL_DATE = datetime.strptime(f"{zero_d}{today.day}-{zero_m}{today.month}-{today.year - CENTURY}/{today.hour - duration}:0:0", MODEL).strftime(MODEL)
     if types == "j":
-        FINAL_DATE = datetime.strptime(f"{zero_d}{today.day - duration}-{zero_m}{today.month}-{today.year - CENTURY}/{today.hour}:{today.minute}:{today.second}", MODEL).strftime(MODEL)
+        FINAL_DATE = datetime.strptime(f"{zero_d}{today.day - duration}-{zero_m}{today.month}-{today.year - CENTURY}/00:0:0", MODEL).strftime(MODEL)
     if types == "m":
-        FINAL_DATE = datetime.strptime(f"{zero_d}{today.day}-{zero_m}{today.month - duration}-{today.year - CENTURY}/{today.hour}:{today.minute}:{today.second}", MODEL).strftime(MODEL)
+        FINAL_DATE = datetime.strptime(f"{zero_d}{today.day}-{zero_m}{today.month - duration}-{today.year - CENTURY}/00:0:0", MODEL).strftime(MODEL)
     if types == "a":
-        FINAL_DATE = datetime.strptime(f"{zero_d}{today.day}-{zero_m}{today.month}-{(today.year - CENTURY) - duration}/{today.hour}:{today.minute}:{today.second}", MODEL).strftime(MODEL)
+        FINAL_DATE = datetime.strptime(f"{zero_d}{today.day}-{zero_m}{today.month}-{(today.year - CENTURY) - duration}/00:0:0", MODEL).strftime(MODEL)
         
     return FINAL_DATE
 
-def compare(firstDate, secondDate):
+def first_less_second(firstDate, secondDate):
     if datetime.strptime(firstDate, MODEL).timestamp() < datetime.strptime(secondDate, MODEL).timestamp():
-        #if secondDate's ts is greater than first one, then secondDate is older.
+        #if firstDate's ts is less than secondDate's one, then firstDate is older than secondDate
+        return True
+    else:
+        return False
+
+def first_more_second(firstDate, secondDate):
+    if datetime.strptime(firstDate, MODEL).timestamp() >= datetime.strptime(secondDate, MODEL).timestamp():
+        #if firstDate's ts is less than secondDate's one, then firstDate is older than secondDate
+        return True
+    else:
         return False
