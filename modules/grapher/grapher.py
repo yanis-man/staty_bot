@@ -5,13 +5,13 @@ import os
 import modules.utils.utils as utils
 from modules.configs.config import GraphConfig
 
-def bar_plot(filename, data_on_x = None, data_on_y = None):
+def bar_plot(server_id,filename, data_on_x = None, data_on_y = None):
     if (data_on_x or data_on_y) is None: 
         return False
     PATH = f"{os.getcwd()}\data\{server_id}"
     cfg = GraphConfig()
 
-    proper_data = get_data(server_id, limit)
+    
 
     plt.bar(data_on_x, data_on_y, color=cfg.BAR_COLOR, alpha=cfg.BAR_ALPHA, width=cfg.BAR_WIDTH)
 

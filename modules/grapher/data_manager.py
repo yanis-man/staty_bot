@@ -4,7 +4,7 @@ import csv
 from modules.tools.date_modifier import parse_limit, compare
 import modules.utils.utils as utils
 
-def get_data(server_id, limit="1j"):
+def get_moh_data(server_id, limit="1j"):
 
     server_id = str(server_id)
     LIMIT = parse_limit(limit)
