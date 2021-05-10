@@ -10,7 +10,7 @@ class GraphConfig():
     DPI = 300
     LINESTYLE = "-"
     LINEWIDTH = .5
-    AXIS_TICKS = 'white'
+    AXIS_TICKS = 'none'
     BAR_WIDTH = .90
 
     #ALPHA
@@ -24,32 +24,36 @@ class GraphConfig():
     AXIS_TXT_COLOR = "none"
 
 class MessageConfig():
-    OK = None
-    LOAD = None 
-    ERR = None
-    def __init__(self):
-        #PREFIX
-        OK = "[OK]"
-        LOAD = "[LOAD]"
-        ERR = "[ERR]"
+
+    OK = "[OK]"
+    LOAD = "[LOAD]"
+    ERR = "[ERR]"
 
     #GENERAL
-    MODULE_LOADED = f"{LOAD} Load OK :"
+    MODULE_LOADED = f" OK :"
     
     #ERRORS
     PERMS_ERROR = "tu vas où mon reuf?"
     WRONG_CHAN = "t'es khabat ? jpeux pas parler ici"
-    ERR_MODULE_LOADING = f"{ERR} Could not load :"
+    ERR_MODULE_LOADING = f" Could not load :"
 
 class FileConfig():
 
     API_KEY = "3985852a41d56dd254a96c34a5118809"
+    API_URL = "https://api.imgbb.com/1/upload"
     FILE_EXTENSION = "jpg"
+
     MOH_FILENAME = "moh"
+    UPH_FILENAME = "uph"
     SEVEN_DAYS_FILENAME = "seven_days"
 
 class EmbedTitle():
-    MOH_TITLE = "Messages en fonction des heures"
+    MOH_TITLE = "Messages par heures"
+    UPH_TITLE = "Utilisateurs par heures"
+
     SEVEN_DAYS = "Nombre de messages sur 7 jours"
     MESSAGE_PER_CHANNEL = "Répartition des messages en fonction des salons"
 
+class Help():
+    MPH_HELP = "Permet d'afficher le nombre de message par heures ex: %mph 2j"
+    UPH_HELP = "Permet d'afficher le nombre d'utilisateur par heures ex: %uph 2j"
