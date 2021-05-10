@@ -1,5 +1,6 @@
 from discord.ext import tasks, commands
 import asyncio
+import csv
 
 class StatsReport(commands.Cog):
     def __init__(self, bot):
@@ -12,8 +13,7 @@ class StatsReport(commands.Cog):
 
     @tasks.loop(hours=24.0)
     async def daily_report(self):
-        print(self.index)
-        self.index += 1
+        
 
 def setup(bot):
     bot.add_cog(StatsReport(bot))
