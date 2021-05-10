@@ -16,4 +16,5 @@ def upload_image(path):
         }
         res = requests.post(url, payload)
         parsed = json.loads(res.text)
+        
         return parsed['data']['url']

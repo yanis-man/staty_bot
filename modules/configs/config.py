@@ -7,21 +7,21 @@ class BotConfig():
 class GraphConfig():
     #GENERAL
     PLOT_ALPHA = True
-    DPI = 700
+    DPI = 300
     LINESTYLE = "-"
     LINEWIDTH = .5
     AXIS_TICKS = 'white'
     BAR_WIDTH = .90
 
     #ALPHA
-    AXIS_ALPHA = 1.0
-    BAR_ALPHA = .7
-    GRID_ALPHA = .2
+    AXIS_ALPHA = 1
+    BAR_ALPHA = 1
+    GRID_ALPHA = .5
 
     #COLOR
-    GRID_COLOR = "royalblue"
-    BAR_COLOR = "royalblue"
-    AXIS_TXT_COLOR = "white"
+    GRID_COLOR = "#698474"
+    BAR_COLOR = "#698474"
+    AXIS_TXT_COLOR = "none"
 
 class MessageConfig():
     OK = None
@@ -44,7 +44,7 @@ class MessageConfig():
 class FileConfig():
 
     API_KEY = "3985852a41d56dd254a96c34a5118809"
-    FILE_EXTENSION = "png"
+    FILE_EXTENSION = "jpg"
     MOH_FILENAME = "moh"
     SEVEN_DAYS_FILENAME = "seven_days"
 

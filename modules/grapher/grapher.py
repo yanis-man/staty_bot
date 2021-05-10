@@ -4,15 +4,16 @@ import os
 
 import modules.utils.utils as utils
 from modules.configs.config import GraphConfig
-from modules.grapher.data_manager import get_data
 
-def graph(server_id, limit, filename):
+def bar_plot(filename, data_on_x = None, data_on_y = None):
+    if (data_on_x or data_on_y) is None: 
+        return False
     PATH = f"{os.getcwd()}\data\{server_id}"
     cfg = GraphConfig()
 
     proper_data = get_data(server_id, limit)
 
-    plt.bar(proper_data[0], proper_data[1], color=cfg.BAR_COLOR, alpha=cfg.BAR_ALPHA, width=cfg.BAR_WIDTH)
+    plt.bar(data_on_x, data_on_y, color=cfg.BAR_COLOR, alpha=cfg.BAR_ALPHA, width=cfg.BAR_WIDTH)
 
     plt.grid(True, linewidth=cfg.LINEWIDTH, color=cfg.GRID_COLOR, linestyle=cfg.LINESTYLE, alpha=cfg.GRID_ALPHA)
 
@@ -24,20 +25,17 @@ def graph(server_id, limit, filename):
     #MAKES AXIS TRANSPARENT
     axis_alpha = cfg.AXIS_ALPHA
 
+    #ax.set_xticklabels(hours_on_x, color="white")
+
     ax.spines['bottom'].set_color(cfg.AXIS_TXT_COLOR)
     ax.spines['top'].set_color(cfg.AXIS_TXT_COLOR)
     ax.spines['left'].set_color(cfg.AXIS_TXT_COLOR)
     ax.spines['right'].set_color(cfg.AXIS_TXT_COLOR)
 
     #COLOR THE AXIS TEXT
-    plt.xticks([r + cfg.BAR_WIDTH for r in range(len(proper_data[1]))],
-        proper_data[0])
-    plt.yticks([r for r in range(len(proper_data[1]))],
-        proper_data[1])
 
     ax.tick_params(axis='x', colors=cfg.AXIS_TICKS)
     ax.tick_params(axis='y', colors=cfg.AXIS_TICKS)
 
-    plt.savefig(f"{PATH}\charts\{filename}.png", transparent=cfg.PLOT_ALPHA, dpi=cfg.DPI)
-    plt.clf()
+    plt.savefig(f"{PATH}\charts\{filename}.jpg", transparent=cfg.PLOT_ALPHA, dpi=cfg.DPI)
     plt.close()
