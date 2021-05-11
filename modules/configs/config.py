@@ -3,6 +3,7 @@ import os
 class BotConfig():
     TOKEN = os.getenv("BOT_TOKEN")
     PREFIX = "%"
+    DELAY_OF_REPORTS = 24
 
 class GraphConfig():
     #GENERAL
