@@ -15,3 +15,7 @@ def setup_dir(server_id):
     server_path = PATH+f"{server_id}"
     os.mkdir(server_path)
     os.mkdir(f"{server_path}\charts")
+
+def return_chann_object(bot, guild_id, chann_id):
+    NAME = bot.get_guild(int(guild_id)).get_channel(int(chann_id))
+    return NAME
