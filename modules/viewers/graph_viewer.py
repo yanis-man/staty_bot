@@ -7,7 +7,7 @@ from modules.configs.config import FileConfig
 FileCfg = FileConfig()
 
 def generate_embed(title, desc, server_id, limit, filename):
-    graph_url = upload_image(f"{os.getcwd()}\\data\\{server_id}\\charts\\{filename}.{FileCfg.FILE_EXTENSION}")
+    graph_url = upload_image(f"{os.getcwd()}/data/{server_id}/charts/{filename}.{FileCfg.FILE_EXTENSION}")
 
     embed=Embed(title=title, description=desc)
     embed.set_author(name=" ")
