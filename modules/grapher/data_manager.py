@@ -11,9 +11,9 @@ def get_moh_data(server_id, limit):
 
     utils.check_dir(server_id)
 
-    PATH = f"{os.getcwd()}\\data\\{server_id}"
+    PATH = f"{os.getcwd()}/data/{server_id}"
 
-    csv_file = open(f"{PATH}\messages.csv", "r", newline="", encoding="utf-8")
+    csv_file = open(f"{PATH}/messages.csv", "r", newline="", encoding="utf-8")
     csv_reader = csv.reader(csv_file)
 
     data = {}
@@ -38,11 +38,11 @@ def get_uph_data(server_id, limit="1j"):
     server_id = str(server_id)
     LIMIT = parse_limit(limit)
 
-    PATH = f"{os.getcwd()}\\data\\{server_id}"
+    PATH = f"{os.getcwd()}/data/{server_id}"
 
     utils.check_dir(server_id)
 
-    csv_file = open(f"{PATH}\messages.csv", "r", newline="", encoding="utf-8")
+    csv_file = open(f"{PATH}/messages.csv", "r", newline="", encoding="utf-8")
     csv_reader = csv.reader(csv_file)
 
     data = {}
@@ -64,7 +64,7 @@ def get_uph_data(server_id, limit="1j"):
     return proper_data
 
 def get_message_stat_data(bot, server_id, limit="1j"):
-    PATH = f"{os.getcwd()}\\data\\{server_id}"
+    PATH = f"{os.getcwd()}/data/{server_id}"
     LIMIT = parse_limit(limit)
     channel_msg_count = {}
     channel_msg_percentage = {}
@@ -73,10 +73,10 @@ def get_message_stat_data(bot, server_id, limit="1j"):
 
         #check if the file is empty
 
-    csv_file = open(f"{PATH}\messages.csv", "r", newline="", encoding="utf-8")
+    csv_file = open(f"{PATH}/messages.csv", "r", newline="", encoding="utf-8")
     csv_reader = csv.reader(csv_file)
 
-    if os.stat(f"{PATH}\messages.csv").st_size != 0:
+    if os.stat(f"{PATH}/messages.csv").st_size != 0:
         #count message in each channel
         for line in csv_reader:
             if line is None: pass
@@ -100,11 +100,11 @@ def get_message_stat_data(bot, server_id, limit="1j"):
         if len(sorted_tuple_message_percentage) < 5 and len(sorted_tuple_message_percentage) > 0:
             top_5_channel = " " 
             for sorted_items in range(0, len(sorted_tuple_message_percentage)): 
-                top_5_channel += f"{sorted_tuple_message_percentage[sorted_items][0]} : {sorted_tuple_message_percentage[sorted_items][1]} % `{int(sorted_tuple_message_percentage[sorted_items][1] * total / 100)} messages`\n"
+                top_5_channel += f"{sorted_tuple_message_percentage[sorted_items][0]} : {sorted_tuple_message_percentage[sorted_items][1]} % `{int(sorted_tuple_message_percentage[sorted_items][1] * total / 100)} messages`/n"
         else:
             top_5_channel = " "
             for sorted_items in range(0,5):
-                top_5_channel += f"{sorted_tuple_message_percentage[sorted_items][0]} : {sorted_tuple_message_percentage[sorted_items][1]} % ({int(sorted_tuple_message_percentage[sorted_items][1] * total / 100)} messages)\n"
+                top_5_channel += f"{sorted_tuple_message_percentage[sorted_items][0]} : {sorted_tuple_message_percentage[sorted_items][1]} % ({int(sorted_tuple_message_percentage[sorted_items][1] * total / 100)} messages)/n"
 
     return [top_5_channel, total]
 

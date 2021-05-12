@@ -1,7 +1,9 @@
 from discord.ext import commands
 import discord
-import datetime
-from modules.grapher.grapher import *
+from discord import Guild
+
+from modules.grapher.data_manager import get_message_stat_data
+from modules.utils.utils import return_chann_object
 
 class Debug(commands.Cog):
     def __init__(self, bot):
@@ -9,10 +11,7 @@ class Debug(commands.Cog):
 
     @commands.command()
     async def de(self, ctx):
-        embed=discord.Embed(title="Rapport journalier", description="06/05/2021")
-        embed.set_author(name="Foutu Stats", icon_url="https://cdn.discordapp.com/avatars/746088097422508073/61662580a73bcd3a2c6bc2f07f7ee8c5.png?size=1024")
-        embed.add_field(name="Message en fonction des heures", value="rien", inline=False)
-        embed.set_image(url="")
-        await ctx.send(embed=embed)
+        GUILD_ID = ctx.guild.id
+        await ctx.send(get_message_stat_data(self.bot, GUILD_ID))
 def setup(bot):
     bot.add_cog(Debug(bot))

@@ -9,7 +9,7 @@ def bar_plot(server_id,filename, data_on_x = None, data_on_y = None):
     
     if (data_on_x or data_on_y) is None: 
         return False
-    PATH = f"{os.getcwd()}\data\{server_id}"
+    PATH = f"{os.getcwd()}/data/{server_id}"
     cfg = GraphConfig()
 
     
@@ -38,5 +38,5 @@ def bar_plot(server_id,filename, data_on_x = None, data_on_y = None):
     ax.tick_params(axis='x', colors=cfg.AXIS_TICKS)
     ax.tick_params(axis='y', colors=cfg.AXIS_TICKS)
 
-    plt.savefig(f"{PATH}\charts\{filename}.jpg", transparent=cfg.PLOT_ALPHA, dpi=cfg.DPI)
+    plt.savefig(f"{PATH}/charts/{filename}.jpg", transparent=cfg.PLOT_ALPHA, dpi=cfg.DPI)
     plt.close()

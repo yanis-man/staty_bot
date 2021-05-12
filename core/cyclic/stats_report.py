@@ -27,7 +27,7 @@ class StatsReport(commands.Cog):
 
     @tasks.loop(hours=BotCfg.DELAY_OF_REPORTS)
     async def daily_report(self):
-        csv_file = open(f"{os.getcwd()}\\data\\guilds_info.csv", "r", newline="", encoding="utf-8")
+        csv_file = open(f"{os.getcwd()}/data/guilds_info.csv", "r", newline="", encoding="utf-8")
         csv_reader = csv.reader(csv_file)
         for l in csv_reader:
             
