@@ -3,7 +3,7 @@ import discord
 import asyncio
 import csv
 import os
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from modules.viewers.graph_viewer import generate_embed, generate_msg_stats_embed
 from modules.configs.config import EmbedTitle, FileConfig, BotConfig
@@ -26,10 +26,10 @@ class StatsReport(commands.Cog):
     def cog_unload(self):
         self.daily_report.cancel()
         
-    @tasks.loop(hours=1.0)
+    @tasks.loop(minutes=1.0)
     async def daily_report(self):
         print("outside")
-        if str(datetime.now().hour) == BotCfg.REPORT_HOUR:
+        if str(datetime.now().hour + timedelta(hours=2)) == BotCfg.REPORT_HOUR:
             print("in it")
             csv_file = open(f"{os.getcwd()}/data/guilds_info.csv", "r", newline="", encoding="utf-8")
             csv_reader = csv.reader(csv_file)
