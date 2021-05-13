@@ -29,31 +29,32 @@ class StatsReport(commands.Cog):
     @tasks.loop(minutes=1.0)
     async def daily_report(self):
         if str(datetime.now().hour) != BotCfg.REPORT_HOUR:
-            return
-        csv_file = open(f"{os.getcwd()}/data/guilds_info.csv", "r", newline="", encoding="utf-8")
-        csv_reader = csv.reader(csv_file)
-        for l in csv_reader:
+            pass
+        else:
+            csv_file = open(f"{os.getcwd()}/data/guilds_info.csv", "r", newline="", encoding="utf-8")
+            csv_reader = csv.reader(csv_file)
+            for l in csv_reader:
             
-            #Useful variables
-            GUILD_ID = int(l[0])
-            GUILD = self.bot.get_guild(GUILD_ID)
-            DEST_CHANNEL = return_chann_object(self.bot, GUILD_ID, int(l[1]))
-            LIMIT = "1j"
+                #Useful variables
+                GUILD_ID = int(l[0])
+                GUILD = self.bot.get_guild(GUILD_ID)
+                DEST_CHANNEL = return_chann_object(self.bot, GUILD_ID, int(l[1]))
+                LIMIT = "1j"
 
-            #Message over hours plot
-            moh_data = get_moh_data(GUILD_ID, LIMIT)
-            bar_plot(GUILD_ID, FileCfg.MOH_FILENAME, moh_data[0], moh_data[1])
+                #Message over hours plot
+                moh_data = get_moh_data(GUILD_ID, LIMIT)
+                bar_plot(GUILD_ID, FileCfg.MOH_FILENAME, moh_data[0], moh_data[1])
             
-            #Users per hours plot
-            uph_data = get_uph_data(GUILD_ID, LIMIT)
-            bar_plot(GUILD_ID, FileCfg.UPH_FILENAME, uph_data[0], uph_data[1])
+                #Users per hours plot
+                uph_data = get_uph_data(GUILD_ID, LIMIT)
+                bar_plot(GUILD_ID, FileCfg.UPH_FILENAME, uph_data[0], uph_data[1])
 
-            #Messages statistics
-            DATA = get_message_stat_data(self.bot, GUILD_ID, LIMIT)
+                #Messages statistics
+                DATA = get_message_stat_data(self.bot, GUILD_ID, LIMIT)
 
-            await DEST_CHANNEL.send(embed=generate_msg_stats_embed(["Répartition des messages"], [DATA[0]], DATA[1]))
-            await DEST_CHANNEL.send(embed=generate_embed(f"{EmbedCfg.MOH_TITLE}", f"Depuis le {parse_limit(LIMIT)}", GUILD_ID, LIMIT, FileCfg.MOH_FILENAME))
-            await DEST_CHANNEL.send(embed=generate_embed(f"{EmbedCfg.UPH_TITLE}", f"Depuis le {parse_limit(LIMIT)}", GUILD_ID, LIMIT, FileCfg.UPH_FILENAME))
+                await DEST_CHANNEL.send(embed=generate_msg_stats_embed(["Répartition des messages"], [DATA[0]], DATA[1]))
+                await DEST_CHANNEL.send(embed=generate_embed(f"{EmbedCfg.MOH_TITLE}", f"Depuis le {parse_limit(LIMIT)}", GUILD_ID, LIMIT, FileCfg.MOH_FILENAME))
+                await DEST_CHANNEL.send(embed=generate_embed(f"{EmbedCfg.UPH_TITLE}", f"Depuis le {parse_limit(LIMIT)}", GUILD_ID, LIMIT, FileCfg.UPH_FILENAME))
     
     @daily_report.before_loop
     async def before(self):
