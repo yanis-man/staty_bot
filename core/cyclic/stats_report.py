@@ -28,7 +28,9 @@ class StatsReport(commands.Cog):
 
     @tasks.loop(minutes=1.0)
     async def daily_report(self):
+        print("outside")
         if str(datetime.now().hour) == BotCfg.REPORT_HOUR:
+            print("in it")
             csv_file = open(f"{os.getcwd()}/data/guilds_info.csv", "r", newline="", encoding="utf-8")
             csv_reader = csv.reader(csv_file)
             for l in csv_reader:
