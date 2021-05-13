@@ -25,8 +25,8 @@ class StatsReport(commands.Cog):
 
     def cog_unload(self):
         self.daily_report.cancel()
-
-    @tasks.loop(hours=1)
+        
+    @tasks.loop(hours=1.0)
     async def daily_report(self):
         print("outside")
         if str(datetime.now().hour) == BotCfg.REPORT_HOUR:

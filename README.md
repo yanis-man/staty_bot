@@ -1,2 +1,2 @@
-# staty_bot
+# foutu_stats
  
