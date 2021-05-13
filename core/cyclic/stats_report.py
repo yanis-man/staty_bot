@@ -25,8 +25,8 @@ class StatsReport(commands.Cog):
 
     def cog_unload(self):
         self.daily_report.cancel()
-
-    @tasks.loop(hours=BotCfg.REPORT_TEST_INTERVAL)
+        
+    @tasks.loop(hours=1.0)
     async def daily_report(self):
         if datetime.now().hour == BotCfg.REPORT_HOUR:
             csv_file = open(f"{os.getcwd()}/data/guilds_info.csv", "r", newline="", encoding="utf-8")
