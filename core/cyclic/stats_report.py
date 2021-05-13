@@ -3,7 +3,7 @@ import discord
 import asyncio
 import csv
 import os
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from modules.viewers.graph_viewer import generate_embed, generate_msg_stats_embed
 from modules.configs.config import EmbedTitle, FileConfig, BotConfig
@@ -25,7 +25,7 @@ class StatsReport(commands.Cog):
 
     def cog_unload(self):
         self.daily_report.cancel()
-        
+
     @tasks.loop(hours=BotCfg.REPORT_TEST_INTERVAL)
     async def daily_report(self):
         if datetime.now().hour == BotCfg.REPORT_HOUR:
