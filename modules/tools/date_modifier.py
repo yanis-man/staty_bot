@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 import re
 
 MODEL = "%d-%m-%y/%H:%M:%S"
@@ -13,7 +13,7 @@ def parse_limit(limit):
 
 #Date & Time substraction
 def compute_limit_date(duration, types):
-    today = datetime.now()
+    today = datetime.now() + timedelta(hours=2)
     FINAL_DATE = None
 
     zero_m = ""
