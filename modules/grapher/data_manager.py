@@ -100,11 +100,11 @@ def get_message_stat_data(bot, server_id, limit="1j"):
         if len(sorted_tuple_message_percentage) < 5 and len(sorted_tuple_message_percentage) > 0:
             top_5_channel = " " 
             for sorted_items in range(0, len(sorted_tuple_message_percentage)): 
-                top_5_channel += f"{sorted_tuple_message_percentage[sorted_items][0]} : {sorted_tuple_message_percentage[sorted_items][1]} % `{int(sorted_tuple_message_percentage[sorted_items][1] * total / 100)} messages`/n"
+                top_5_channel += f"{sorted_tuple_message_percentage[sorted_items][0]} : {sorted_tuple_message_percentage[sorted_items][1]} % `{int(sorted_tuple_message_percentage[sorted_items][1] * total / 100)} messages`\n"
         else:
             top_5_channel = " "
             for sorted_items in range(0,5):
-                top_5_channel += f"{sorted_tuple_message_percentage[sorted_items][0]} : {sorted_tuple_message_percentage[sorted_items][1]} % ({int(sorted_tuple_message_percentage[sorted_items][1] * total / 100)} messages)/n"
+                top_5_channel += f"{sorted_tuple_message_percentage[sorted_items][0]} : {sorted_tuple_message_percentage[sorted_items][1]} % ({int(sorted_tuple_message_percentage[sorted_items][1] * total / 100)} messages)\n"
 
     return [top_5_channel, total]
 
