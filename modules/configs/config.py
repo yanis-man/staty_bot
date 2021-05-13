@@ -3,7 +3,7 @@ import os
 class BotConfig():
     TOKEN = os.getenv("BOT_TOKEN")
     PREFIX = "%"
-    REPORT_HOUR = '0'
+    REPORT_HOUR = 0
 
 class GraphConfig():
     #GENERAL
