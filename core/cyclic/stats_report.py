@@ -26,7 +26,7 @@ class StatsReport(commands.Cog):
     def cog_unload(self):
         self.daily_report.cancel()
 
-    @tasks.loop(minutes=1)
+    @tasks.loop(minutes=1.0)
     async def daily_report(self):
         if str(datetime.now().hour) != BotCfg.REPORT_HOUR:
             return
