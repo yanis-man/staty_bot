@@ -6,6 +6,11 @@ class BotConfig():
     REPORT_HOUR = 0
     REPORT_TEST_INTERVAL = 1.0
 
+    def data_path(server_id):
+        server_id = str(server_id)
+        PATH = f"{os.getcwd()}/data/{server_id}"
+        return
+
 class GraphConfig():
     #GENERAL
     PLOT_ALPHA = True

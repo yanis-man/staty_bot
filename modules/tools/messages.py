@@ -2,11 +2,12 @@ import csv
 from datetime import datetime, timedelta
 import os
 import  modules.utils.utils as Utils
+from modules.configs.config import BotConfig
 
 def register_message(server_id, author_id, channel_id):
 
-    server_id = str(server_id)
-    PATH = f"{os.getcwd()}/data/{server_id}"
+    BotCfg = BotConfig()
+    PATH = BotCfg.data_path(server_id)
 
     Utils.check_dir(server_id)
 
