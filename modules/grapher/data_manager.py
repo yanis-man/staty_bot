@@ -21,7 +21,7 @@ def get_moh_data(server_id, limit):
         if first_less_second(line[2], LIMIT):
             pass
         if first_more_second(line[2], LIMIT):
-            hour = line[2].split("/")[1].split(":")[0] + "h"
+            hour = line[2].split("/")[1].split(":")[0]
             if hour not in data: data[hour] = 0 
             data[hour] += 1
 
